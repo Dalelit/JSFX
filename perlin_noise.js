@@ -1,5 +1,8 @@
 ///////////////////////////////////////
 // Perlin noise stuff
+//
+// uses stuff in jsfx_util.js
+
 
 class Perlin_Noise
 {
@@ -151,15 +154,7 @@ function drawBackBuffer()
     for (y = 0; y < pn_back_buffer.height; y++) for (x = 0; x < pn_back_buffer.width; x++)
     {
         var c = pn.get_value(x,y);
-
-        // make it more 'cloudy'
-        if (c > 0.8) c = 1;
-        else if (c > 0.5) { c = (c - 0.5) / 0.3; c = c*c; }
-        else c = 0;
-
-        // not too bright
-        // c *= 0.75;
-        // c *= c;
+        // c = gammaConversion[Math.floor(c * gammaConversion.length)];
 
         pn_back_buffer.data[indx] = c * r;
         indx++;

@@ -3,28 +3,12 @@
 // - move the arrays to fixed size and swap dead particles around
 // - particle sources initialised with 0 get removed before the emmiter can kick in
 // - try adding it to the game now
-
+//
+// uses stuff in jsfx_util.js
 
 
 /////////////////
 // helper functions
-
-// note... 0 inclusive to max exclusive
-function randomInt(max)
-{
-    return Math.floor(Math.random() * max);
-}
-
-// note... inclusive to exclusive
-function randomRangeInt(min, max)
-{
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function randomRangeFloat(min, max)
-{
-    return (Math.random() * (max - min)) + min;
-}
 
 function randomRGB()
 {

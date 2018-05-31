@@ -1,7 +1,10 @@
 // https://web.archive.org/web/20160418004149/http://freespace.virgin.net/hugo.elias/graphics/x_water.htm
 
+// uses stuff in jsfx_util.js
+
+
 //
-// to do
+// To Do
 // - have it work over a texture
 
 let wcnvs = null;
@@ -9,7 +12,6 @@ let wctx = null;
 let water_buffer1 = null;
 let water_buffer2 = null;
 let water_image = null;
-let gammaConversion = null;
 
 function water_drops_onclick(canvas, event)
 {
@@ -33,20 +35,8 @@ function water_drops_initalise(canvas)
 
     water_image = wctx.createImageData(wcnvs.width, wcnvs.height);
 
-    // pre compute gamma conversions for performance
-    // to do - what resolution is minimum?
-    gammaConversion = new Array(10000);
-    let power = 1.0 / 2.2;
-    let delta = 1 / gammaConversion.length;
-    let val = 0.0;
-    for (let i = 0; i < gammaConversion.length; i++)
-    {
-        gammaConversion[i] = Math.pow(val, power);
-        val += delta;
-    }
-
     // start
-    water_drops_animcation_loop();
+    water_drops_animation_loop();
 }
 
 function water_drops_copy_buffers()
@@ -108,7 +98,7 @@ function water_drops_render_buffer(buffer)
 }
 
 let frame_count = 0;
-function water_drops_animcation_loop()
+function water_drops_animation_loop()
 {
     if (frame_count == 0)
     {
@@ -128,5 +118,5 @@ function water_drops_animcation_loop()
         frame_count--;
     }
 
-    window.requestAnimationFrame(water_drops_animcation_loop);
+    window.requestAnimationFrame(water_drops_animation_loop);
 }
